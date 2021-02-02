@@ -23,8 +23,7 @@ def run(remote_ip, remote_port, situation_value):
 
 
 if __name__ == '__main__':
-    # situation_value = sys.argv[1]
-    situation_value = 'get_situation'
+    situation_value = sys.argv[1]
     remote_ip_port = SolveFile.get_info_from_xml(
         '{}/../conf/monitor.xml'.format(sys.path[0]))
     for x in remote_ip_port:
