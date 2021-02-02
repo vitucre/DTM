@@ -5,8 +5,8 @@ import time
 
 
 #从xml文件获取配置
-def get_info_from_xml():
-    xmlObj = ET.parse('{}/monitor.xml'.format(sys.path[0]))
+def get_info_from_xml(conf_file):
+    xmlObj = ET.parse(conf_file)
     tree = xmlObj.getroot()
     for x in tree.findall('ip_port'):
         ip_port_from_xml = x.text
