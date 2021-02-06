@@ -30,7 +30,11 @@ def get_file_from_xml(conf_file):
             tmp1.append(y.text.split(':')[0])
             tmp1.append(int(y.text.split(':')[1]))
         for i in x.findall('detect_interval_time'):
-            tmp1.append(int(i.text))
+            if i.text is None:
+                i.text = 3600
+                tmp1.append(i.text)
+            else:
+                tmp1.append(int(i.text))
         for j in x.findall('monitor_pid'):
             for z in j.text.split(','):
                 tmp2.append(int(z))
