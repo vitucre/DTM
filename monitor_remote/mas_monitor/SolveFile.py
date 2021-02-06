@@ -42,15 +42,3 @@ def get_file_from_xml(conf_file):
         tmp.append(tmp2)
         monitor_ip_dir.append(tmp)
     return monitor_ip_dir
-
-
-#生成器，每次迭代获取文件的最后一行，用于监控日志
-def tail_file(myfile):
-    with open(myfile, 'r', encoding='utf-8') as f:
-        f.seek(0, 2)
-        while True:
-            line = f.readline()
-            if line:
-                yield line
-            else:
-                time.sleep(1)

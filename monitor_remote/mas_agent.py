@@ -53,6 +53,6 @@ def put_info(local_ip, local_prot):
 
 if __name__ == '__main__':
     local_ip = '127.0.0.1'
-    local_port = 11111
+    local_port = 9999
     #开启监听
     put_info(local_ip, local_port)
