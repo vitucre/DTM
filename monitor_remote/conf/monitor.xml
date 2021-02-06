@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <collection>
-    <ip_port>192.168.6.1:9999,192.168.6.112:10000</ip_port>
+<remote_host>
+    <ip_port>127.0.0.1:11111</ip_port>
+    <monitor_pid>22,23,3306</monitor_pid>
+    <!--探测间隔时间，单位秒-->
+    <detect_interval_time>3600</detect_interval_time>
+</remote_host>
+<remote_host>
+    <ip_port>192.168.6.112:10000</ip_port>
+    <monitor_pid>22,23,3306</monitor_pid>
+    <detect_interval_time>30</detect_interval_time>
+</remote_host>
 </collection>

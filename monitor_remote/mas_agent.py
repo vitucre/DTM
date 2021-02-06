@@ -5,7 +5,7 @@ import sys
 
 
 #监听并返回相关信息
-def give_process(local_ip, local_prot):
+def put_info(local_ip, local_prot):
     serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     serversocket.bind((local_ip, local_prot))
     serversocket.listen(5)
@@ -52,7 +52,7 @@ def give_process(local_ip, local_prot):
 
 
 if __name__ == '__main__':
-    local_ip = '192.168.6.112'
-    local_port = 10000
+    local_ip = '127.0.0.1'
+    local_port = 11111
     #开启监听
-    give_process(local_ip, local_port)
+    put_info(local_ip, local_port)

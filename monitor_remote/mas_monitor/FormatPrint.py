@@ -1,6 +1,6 @@
 #此模块用来输出格式化信息
-import RemoteInfoSolve
-import GetRemoteInfo
+from mas_monitor import GetRemoteInfo
+from mas_monitor import RemoteInfoSolve
 
 
 def do_situation_value(situation_value, remote_ip, remote_port):
@@ -25,6 +25,9 @@ def do_situation_value(situation_value, remote_ip, remote_port):
             raise Exception('please input right situation value')
 
         #输出格式化信息
+        print(
+            '--------------------------------{}:{}--------------------------------'
+            .format(remote_ip, remote_port))
         if situation_value == 'get_openfiles':
             openfiles_info_solve_str = RemoteInfoSolve.openfiles_info_solve(
                 remote_situation_result, remote_platform)
