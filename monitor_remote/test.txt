@@ -1,39 +1,18 @@
-123
-hello world
-aa
-ss
-ssd
-aaa
-kkk
-iii
-mmm
-lll
-ooo
-ppp
-
-nnn
-
-hhh
-ggg
-yyy
-ooo
-aaa
-uuu
-hello world
-are u ok
-are u ok?
-i am fine
-why?
-asdjksla
-lsdkflsdk
-xcvxcv
-
-asdkjaskldjksla
-
-dfgkdfjgkl
-xcvxcva
-qweqwe
-dsfds
-irtioeruo
-xcvxcv
-aaa
+    clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    clientsocket.connect((host, port))
+    #监控指定文件
+    t = tail_file(monitor_file, scan_file_time)
+    while True:
+        try:
+            content = []
+            content.append(next(t))
+            content.append(aliasname)
+            clientsocket.send(json.dumps(content).encode('utf-8'))
+            del content
+        except:
+            clientsocket.connect((host, port))
+            content = []
+            content.append(next(t))
+            content.append(aliasname)
+            clientsocket.send(json.dumps(content).encode('utf-8'))
+            del content
