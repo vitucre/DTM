@@ -15,7 +15,7 @@ if __name__ == '__main__':
     serversocket.bind((host, port))
     while True:
         #获取被监控主机传来的数据，格式为[['内容'],['日志别名']]
-        data, addr = serversocket.recvfrom(5242880)
+        data, addr = serversocket.recvfrom(512000)
         data_list = json.loads(data.decode('utf-8'))
         content = data_list[0]
         aliasname = data_list[1]

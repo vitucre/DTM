@@ -11,7 +11,7 @@ def tail_file(myfile, scan_file_time):
     with open(myfile, 'r', encoding='utf-8') as f:
         f.seek(0, 2)
         while True:
-            content = f.read()
+            content = f.read(1472)
             if content:
                 yield content
             time.sleep(scan_file_time)
@@ -28,7 +28,7 @@ def get_info_from_xml(xmlFile):
         tmp.append(int(x.text.split(':')[1]))
     for y in tree.findall('scan_file_time'):
         if y.text is None:
-            y.text = 30
+            y.text = 3
             tmp.append(y.text)
         else:
             tmp.append(int(y.text))
