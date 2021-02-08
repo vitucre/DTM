@@ -9,7 +9,7 @@ import xml.etree.ElementTree as ET
 def put_info(local_ip, local_prot):
     serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     serversocket.bind((local_ip, local_prot))
-    serversocket.listen(5)
+    serversocket.listen(20)
     while True:
         s, addr = serversocket.accept()
         message = s.recv(1024).decode('utf-8')

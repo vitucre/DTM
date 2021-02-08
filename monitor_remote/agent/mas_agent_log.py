@@ -45,24 +45,14 @@ def get_info_from_xml(xmlFile):
 
 #调用线程监控不同日志，并发送给监控端主机
 def run(host, port, scan_file_time, monitor_file, aliasname):
-    clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    clientsocket.connect((host, port))
+    clientsocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     #监控指定文件
     t = tail_file(monitor_file, scan_file_time)
     while True:
-        try:
-            content = []
-            content.append(next(t))
-            content.append(aliasname)
-            clientsocket.send(json.dumps(content).encode('utf-8'))
-            del content
-        except:
-            clientsocket.connect((host, port))
-            content = []
-            content.append(next(t))
-            content.append(aliasname)
-            clientsocket.send(json.dumps(content).encode('utf-8'))
-            del content
+        content = []
+        content.append(next(t))
+        content.append(aliasname)
+        clientsocket.sendto(json.dumps(content).encode('utf-8'), (host, port))
 
 
 if __name__ == '__main__':

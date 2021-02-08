@@ -2,7 +2,7 @@
 <collection>
 <!--本地主机绑定ip:port-->
 <!--什么时候需要填写？启动[auto_monitor_log.py]-->
-<local_host>127.0.0.1:9998</local_host>
+<local_host>192.168.6.1:9998</local_host>
 <!--监控的对端主机信息-->
 <!--什么时候需要填写？启动[auto_monitor_process.py,monitor.py]-->
 <remote_host>

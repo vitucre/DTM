@@ -11,13 +11,11 @@ if __name__ == '__main__':
         sys.path[0]))
     host = local_ip_port[0]
     port = local_ip_port[1]
-    serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    serversocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     serversocket.bind((host, port))
-    serversocket.listen(20)
     while True:
-        s, addr = serversocket.accept()
         #获取被监控主机传来的数据，格式为[['内容'],['日志别名']]
-        data = s.recv(512000)
+        data, addr = serversocket.recvfrom(5242880)
         data_list = json.loads(data.decode('utf-8'))
         content = data_list[0]
         aliasname = data_list[1]
