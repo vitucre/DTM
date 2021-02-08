@@ -1,7 +1,7 @@
 import socket
-import sys
 import time
 import json
+import sys
 import threading
 import xml.etree.ElementTree as ET
 
@@ -67,7 +67,7 @@ def run(host, port, scan_file_time, monitor_file, aliasname):
 
 if __name__ == '__main__':
     #从xml中获取配置格式为[['127.0.0.1',9998,60],[['监控文件1','别名'],['监控文件2','别名']...]]
-    xml_list = get_info_from_xml('mas_agent_log.xml')
+    xml_list = get_info_from_xml('{}/agent.xml'.format(sys.path[0]))
     host = xml_list[0][0]
     port = xml_list[0][1]
     scan_file_time = xml_list[0][2]

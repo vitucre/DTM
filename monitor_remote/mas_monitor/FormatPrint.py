@@ -7,17 +7,17 @@ def do_situation_value(situation_value, remote_ip, remote_port):
     if situation_value == 'get_situation':
         print(GetRemoteInfo.get_situation())
     else:
-        #获取对端主机操作系统信息
+        #获取被监控主机操作系统信息
         remote_platform = GetRemoteInfo.judge_remote_platform(
             remote_ip, remote_port)
-        #获取将要返回对端主机信息类型
+        #获取将要返回被监控主机信息类型
         remote_info_type = RemoteInfoSolve.judge_remote_info_type(
             situation_value)
-        #调用列表方法获取对端主机信息
+        #调用列表方法获取被监控主机信息
         if remote_info_type == 'list_info':
             remote_situation_result = GetRemoteInfo.get_remote_situation_list(
                 remote_ip, remote_port, situation_value)
-        #调用字符串方法获取对端主机信息
+        #调用字符串方法获取被监控主机信息
         elif remote_info_type == 'str_info':
             remote_situation_result = GetRemoteInfo.get_remote_situation_str(
                 remote_ip, remote_port, situation_value)

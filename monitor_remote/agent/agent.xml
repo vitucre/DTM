@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <collection>
+    <!--本地ip:port-->
+    <local_host>127.0.0.1:9999</local_host>
     <!--监控端主机的ip:port-->
     <monitor_host>127.0.0.1:9998</monitor_host>
     <!--扫描文件间隔时间，单位秒-->
     <scan_file_time></scan_file_time>
     <!--需要监控的文件-->
     <monitor_files>
-        <file_alias>D:\Desktop\git\monitor_remote\test.txt,test.txt</file_alias>
+        <file_alias>D:\Desktop\git\monitor_remote\test.txt,test2.txt</file_alias>
     </monitor_files>
 </collection>

@@ -2,6 +2,7 @@ import socket
 import psutil
 import json
 import sys
+import xml.etree.ElementTree as ET
 
 
 #监听并返回相关信息
@@ -51,8 +52,20 @@ def put_info(local_ip, local_prot):
             s.send(cpu_json.encode('utf-8'))
 
 
+#从xml获取数据，格式为['ip',port]
+def get_ip_from_xml(xmlFile):
+    xmlObj = ET.parse(xmlFile)
+    tree = xmlObj.getroot()
+    local_ip_port = []
+    for x in tree.findall('local_host'):
+        local_ip_port.append(x.text.split(':')[0])
+        local_ip_port.append(int(x.text.split(':')[1]))
+    return local_ip_port
+
+
 if __name__ == '__main__':
-    local_ip = '127.0.0.1'
-    local_port = 9999
+    local_ip_port = get_ip_from_xml('{}/agent.xml'.format(sys.path[0]))
+    local_ip = local_ip_port[0]
+    local_port = local_ip_port[1]
     #开启监听
     put_info(local_ip, local_port)

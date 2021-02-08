@@ -1,11 +1,20 @@
-#该模块用来处理文件
+#该模块用来处理xml文件
 import xml.etree.ElementTree as ET
-import sys
-import time
 
 
-#从xml文件获取ip信息，返回格式形如([127.0.0.1,9999],[192.168.6.112,10000])
-def get_ip_from_xml(conf_file):
+#获取本地主机ip:port,返回格式为['ip',port]
+def get_local_ip(conf_file):
+    xmlObj = ET.parse(conf_file)
+    tree = xmlObj.getroot()
+    local_ip_port = []
+    for x in tree.findall('local_host'):
+        local_ip_port.append(x.text.split(':')[0])
+        local_ip_port.append(int(x.text.split(':')[1]))
+    return local_ip_port
+
+
+#从xml文件获取被监控主机ip:port，返回格式形如([127.0.0.1,9999],[192.168.6.112,10000])
+def get_remote_ip(conf_file):
     xmlObj = ET.parse(conf_file)
     tree = xmlObj.getroot()
     monitor_ip_port = []
@@ -18,7 +27,7 @@ def get_ip_from_xml(conf_file):
 
 
 #从xml文件获取文件信息，返回格式形如[[[127.0.0.1,9999,3600],[监控pid1,监控pid2,...]],[[192.168.6.112,10000,3600],[监控pid1,监控pid2,...]]]
-def get_file_from_xml(conf_file):
+def get_remote_files(conf_file):
     xmlObj = ET.parse(conf_file)
     tree = xmlObj.getroot()
     monitor_ip_dir = []

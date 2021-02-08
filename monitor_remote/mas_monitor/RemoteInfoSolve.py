@@ -1,7 +1,7 @@
-#此模块用来解析处理对端主机信息
+#此模块用来解析处理被监控主机信息
 
 
-#判断将要返回对端主机信息类型
+#判断将要返回被监控主机信息类型
 def judge_remote_info_type(situation_value):
     list_info = ['get_process', 'get_openfiles', 'get_memory', 'get_cpu']
     str_info = ['get_platform']

@@ -1,4 +1,4 @@
-#此模块用来获取对端主机信息
+#此模块用来获取被监控主机信息
 import socket
 import json
 
@@ -11,7 +11,7 @@ def get_situation():
     return situation
 
 
-#获取对端主机的状态信息
+#获取被监控主机的状态信息
 #返回信息转列表类型
 def get_remote_situation_list(remote_ip, remote_port, message):
     clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -31,7 +31,7 @@ def get_remote_situation_str(remote_ip, remote_port, message):
     return result_message_str
 
 
-#判断对端主机操作系统类型
+#判断被监控主机操作系统类型
 def judge_remote_platform(remote_ip, remote_port):
     remote_situation_platform = get_remote_situation_str(
         remote_ip, remote_port, 'get_platform')
