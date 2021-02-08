@@ -1,2 +1,0 @@
-# DTC
-Distributed Task Control
