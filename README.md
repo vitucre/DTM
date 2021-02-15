@@ -1,5 +1,5 @@
-# DTC
-Distributed Task Control
+# DTM
+Distributed Task Manager
 
 # 可以用来做什么
 
